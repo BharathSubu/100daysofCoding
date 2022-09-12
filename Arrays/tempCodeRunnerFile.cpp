@@ -1,1 +1,1 @@
-unique
+int
