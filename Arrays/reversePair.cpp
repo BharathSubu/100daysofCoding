@@ -114,6 +114,4 @@ int main()
     vi nums = {40, 25, 19, 12, 9, 6, 2};
     int pairs = reversePairs(nums);
     cout << pairs;
-    nl;
-    FOR(i, 0, nums.size()) { cout << nums[i] << " "; }
 }
