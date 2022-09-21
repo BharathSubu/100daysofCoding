@@ -34,7 +34,7 @@ int findPeakElement(vector<int> &nums)
 
 int main()
 {
-    vi arr = {2, 1};
+    vi arr = {4,5,6,3,1};
     int peak = findPeakElement(arr);
     cout << peak;
 }
