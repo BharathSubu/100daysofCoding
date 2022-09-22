@@ -29,7 +29,7 @@ void solve()
     int curr = 0;
     FOR(i, 0, n)
     {
-        curr = __gcd(g, arr[i]);
+        curr = __gcd(curr, arr[i]);
         if (curr == g)
         {
             count++;
