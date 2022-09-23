@@ -23,9 +23,9 @@ void solve()
     FOR(i, 0, n)
     {
         if (arr[i] <= m / 2)
-            total += m - arr[i];
+            total += abs(m - arr[i]);
         else
-            total += arr[i] - 1;
+            total += abs(arr[i] - 1);
     }
     cout << total;
     nl;
