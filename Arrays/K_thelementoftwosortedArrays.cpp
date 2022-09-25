@@ -12,51 +12,32 @@ typedef long long ll;
 #define vvi vector<vector<int>>
 int kthElement(int arr1[], int arr2[], int n, int m, int k)
 {
-    int start1 = 0, end1 = n - 1, start2 = 0, end2 = m - 1;
-    int num = -1;
-    while (start1 <= end1 && start2 <= end2)
-    {
-        int mid1 = start1 + (end1 - start1) / 2;
-        int mid2 = start2 + (end2 - start2) / 2;
-        int elementsbehind =n-mid1 + m-mid2 -2 ;
-        if(elementsbehind == m+n-k) {
+ 
+   if(m > n) {
+        return kthElement(arr2, arr1, m, n, k); 
+    }
+        
+    int low = max(0,k-m), high = min(k,n);
+        
+    while(low <= high) {
+        int cut1 = (low + high) >> 1; 
+        int cut2 = k - cut1; 
+        int l1 = cut1 == 0 ? INT_MIN : arr1[cut1 - 1]; 
+        int l2 = cut2 == 0 ? INT_MIN : arr2[cut2 - 1];
+        int r1 = cut1 == n ? INT_MAX : arr1[cut1]; 
+        int r2 = cut2 == m ? INT_MAX : arr2[cut2]; 
             
-            int mid = arr1[mid1] > arr2[mid2] ? mid2 : mid1;
-            if(arr1[mid] == arr1[mid1])
-            FORD(i,mid,0){
-                if()
-            }
-            else{
-                
-            }
-            return num; 
+        if(l1 <= r2 && l2 <= r1) {
+            return max(l1, l2);
         }
-        else{
-            if(elementsbehind < k - 1){
-            cout<<mid1<<" "<<mid2 <<" "<<arr1[mid1] <<" "<< arr2[mid2]<<" ";nl;
-
-                if(arr1[mid1] > arr2[mid2]){
-                    start2 = mid2 + 1;
-                }
-                else{
-                    start1 = mid1 + 1;
-                }
-            }
-            else{
-                if(elementsbehind > k - 1){
-                cout<<mid1<<" "<<mid2 <<" "<<arr1[mid1] <<" "<< arr2[mid2]<<" ";nl;
-                if(arr1[mid1] > arr2[mid2]){
-                    end1 = mid1 - 1;
-                }
-                else{
-                    end2 = mid2 - 1;
-                }
-             }
-            }
+        else if (l1 > r2) {
+            high = cut1 - 1;
+        }
+        else {
+            low = cut1 + 1; 
         }
     }
-    cout<<start1<<" "<<end2<<" "<<start2<<" "<<end2;
-    return 1;
+    return 1; 
 }
 int main()
 {
