@@ -3,6 +3,7 @@
 #include <bits/stdc++.h>
 #include <vector>
 using namespace std;
+
 typedef long long ll;
 
 #define FOR(a, b, c) for (int(a) = (b); (a) < (c); ++(a))
