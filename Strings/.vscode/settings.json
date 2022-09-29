@@ -1,6 +1,14 @@
 {
-    "files.associations": {
-        "string": "cpp",
-        "iosfwd": "cpp"
-    }
+  "files.associations": {
+    "string": "cpp",
+    "iosfwd": "cpp",
+    "compare": "cpp",
+    "xstddef": "cpp",
+    "xutility": "cpp",
+    "utility": "cpp",
+    "vector": "cpp",
+    "initializer_list": "cpp",
+    "type_traits": "cpp",
+    "limits": "cpp"
+  }
 }

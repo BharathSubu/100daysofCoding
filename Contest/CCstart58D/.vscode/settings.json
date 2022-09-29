@@ -1,5 +1,7 @@
 {
   "files.associations": {
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "vector": "cpp",
+    "utility": "cpp"
   }
 }
