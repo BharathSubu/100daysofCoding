@@ -9,6 +9,8 @@
     "vector": "cpp",
     "initializer_list": "cpp",
     "type_traits": "cpp",
-    "limits": "cpp"
+    "limits": "cpp",
+    "iostream": "cpp",
+    "unordered_map": "cpp"
   }
 }
