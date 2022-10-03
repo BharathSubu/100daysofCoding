@@ -1,4 +1,4 @@
-// https://practice.geeksforgeeks.org/problems/count-number-of-substrings4528/
+// https://leetcode.com/problems/subarrays-with-k-different-integers/
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,30 +12,12 @@ typedef long long ll;
 #define pb push_back
 #define vvi vector<vector<int>>
 
-// time limit passed
-long long int atMostK(string &A, int K)
-{
-    long long int i = 0, res = 0;
-    int count[26] = {0};
-    for (long long int j = 0; j < A.size(); ++j)
-    {
-        if (!count[A[j] - 97]++)
-            K--;
-        while (K < 0)
-        {
-            if (!--count[A[i] - 97])
-                K++;
-            i++;
-        }
-        res += j - i + 1;
-    }
-    return res;
-}
+
 
 // time limit failed
-long long int atmost(string s, int k)
+long long int atmost(vi s, int k)
 {
-    map<char, int> m;
+    map<int, int> m;
     int n = s.size();
     int j = 0;
     int count = 0;
@@ -55,13 +37,15 @@ long long int atmost(string s, int k)
     return count;
 }
 
-long long int substrCount(string s, int k)
+int subarraysWithKDistinct(vector<int> &nums, int k)
 {
-    return atMostK(s, k) - atMostK(s, k - 1);
+    return atmost(nums, k) - atmost(nums, k - 1);
 }
+
 int main()
 {
 
-    string s = "abaaca";
-    cout << substrCount(s, 2);
+    vi nums = {1, 2, 1, 2, 3};
+    int k = 2;
+    cout << subarraysWithKDistinct(nums, 2);
 }

@@ -11,6 +11,7 @@
     "type_traits": "cpp",
     "limits": "cpp",
     "iostream": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "xmemory": "cpp"
   }
 }
