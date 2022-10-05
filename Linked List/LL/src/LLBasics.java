@@ -108,7 +108,7 @@ public class LLBasics {
         return temp;
     }
 
-    public  void display(){
+    public void display(){
         Node temp = head;
         while(temp != null){
             System.out.print( temp.value + "->");
@@ -178,33 +178,100 @@ public class LLBasics {
         }
         return head;
     }
-    public static LLBasics merge(LLBasics first, LLBasics second) {
-        Node f = first.head;
-        Node s = second.head;
+//    public static LLBasics merge(LLBasics first, LLBasics second) {
+//        Node f = first.head;
+//        Node s = second.head;
+//
+//        LLBasics ans = new LLBasics();
+//
+//        while (f != null && s != null) {
+//            if (f.value < s.value) {
+//                ans.insertLast(f.value);
+//                f = f.next;
+//            } else {
+//                ans.insertLast(s.value);
+//                s = s.next;
+//            }
+//        }
+//
+//        while (f != null) {
+//            ans.insertLast(f.value);
+//            f = f.next;
+//        }
+//
+//        while (s != null) {
+//            ans.insertLast(s.value);
+//            s = s.next;
+//        }
+//
+//        return ans;
+//    }
+//    public Node mergesort(Node start,Node start1){
+//        Node mid = getMid(start);
+//        Node end = getEnd(start);
+//        start = mergesort(start,mid);
+//        mid = mergesort(mid.next,end);
+//        return mergeLLsort(start,mid,end);
+//    }
 
-        LLBasics ans = new LLBasics();
+    public Node mergeLLsort(Node start , Node mid , Node end){
+        Node list1 = start;
+        Node list2 = mid.next;
+        Node temp1 , temp2;
+        if(list1.value < list2.value){
+            temp1 = list1;
+            temp2 = list2;
+        }
+        else{
+            temp2 = list1;
+            temp1 = list2;
+        }
+        Node head = temp1;
+        Node curr = temp1;
+        while(temp1 !=null &&  temp2 !=null){
+            System.out.println(temp1.value + " " + temp2.value);
+            if(temp1.value <= temp2.value){
+                curr = temp1;
+                temp1= temp1.next;
+            }
+            else if (temp1.value > temp2.value){
 
-        while (f != null && s != null) {
-            if (f.value < s.value) {
-                ans.insertLast(f.value);
-                f = f.next;
-            } else {
-                ans.insertLast(s.value);
-                s = s.next;
+                Node ins = new Node(temp2.value);
+                ins.next = temp1;
+                curr.next = ins;
+                curr = ins;
+                temp2 = temp2.next;
             }
         }
-
-        while (f != null) {
-            ans.insertLast(f.value);
-            f = f.next;
+        while(temp1!=null ){
+            curr.next = temp1;
+            curr = curr.next;
+            temp1 = temp1.next;
         }
-
-        while (s != null) {
-            ans.insertLast(s.value);
-            s = s.next;
+        while(temp2!=null ) {
+            curr.next = temp2;
+            curr = curr.next;
+            temp2 = temp2.next;
         }
+        return head;
+    }
 
-        return ans;
+    public Node getMid(Node start){
+        Node slow = start;
+        Node fast = start;
+        while(fast != null && fast.next !=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public Node getEnd(Node start){
+        Node temp = start;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        return temp;
     }
 
     public Node reverse(){

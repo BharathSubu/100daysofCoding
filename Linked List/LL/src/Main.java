@@ -20,11 +20,12 @@ public class Main {
 
         list2.display();
 
-//        LLBasics merge =new LLBasics();
-//        merge.head = list1.mergeTwoLists(list1.head,list2.head);
 //        merge.display();
      list2.reverse();
      list2.display();
+     LLBasics merge =new LLBasics();
+     merge.head = list1.mergesort(list2.head,list2.head);
+     merge.display();
 //        System.out.println(list.deleteLast());
 //
 //        list.display();
