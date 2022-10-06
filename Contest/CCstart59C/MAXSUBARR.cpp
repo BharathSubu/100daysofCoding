@@ -39,10 +39,9 @@ void solve()
     cin >> arrA[i];
     ll m;
     cin >> m;
-    vl arrB(n);
+    vl arrB(m);
     FOR(i, 0, m)
     cin >> arrB[i];
-
     vl arrFirst;
     vl arrSecond;
     FOR(i, 0, n)
