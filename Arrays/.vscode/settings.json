@@ -23,6 +23,8 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "valarray": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "random": "cpp",
+        "complex": "cpp"
     }
 }
