@@ -14,6 +14,7 @@ typedef long long ll;
 int flag = 0;
 int mod = pow(10, 9) + 7;
 
+// recursion
 ll binpowrec(ll x, ll n, ll m, ll curr = 1)
 {
 
@@ -33,6 +34,7 @@ ll binpowrec(ll x, ll n, ll m, ll curr = 1)
     }
 }
 
+// iterative
 ll binpow(long long a, long long b, long long m)
 {
     a %= m;
