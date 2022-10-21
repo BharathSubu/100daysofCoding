@@ -30,7 +30,6 @@ int garbageCollection(vector<string> &garbage, vector<int> &travel)
         }
         pickuptime+=garbage[i].size();
     }
-    cout<<g<<' '<<p<<" "<<m;nl;
     int traveltime = 0;
     if(g>=1) traveltime+=travel[g-1];
     if(p>=1) traveltime+=travel[p-1];

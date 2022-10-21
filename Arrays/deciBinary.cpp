@@ -17,7 +17,6 @@ int minPartitions(string s)
     int max = 0;
     FOR(i, 0, n)
     {
-        cout<<s[i] - '0'<<" ";
         if (s[i] - '0' > max)
         {
             max = s[i] - '0';
