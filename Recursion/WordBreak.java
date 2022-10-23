@@ -1,35 +1,28 @@
+//https://leetcode.com/problems/word-break/submissions/
+
 import java.util.*;
 
 public class WordBreak {
 
-    StringBuilder str = new StringBuilder();
+    int [] dp = new int [301];
 
-    public boolean wordBreak(String s, List<String> wordDict) {
-        return wordBreak(s, wordDict, 0);
+    int helper(String s ,  List<String> wordDict , int posi){
+        if(posi==s.length()) return 1;
+        StringBuilder str = new StringBuilder();
+        if(dp[posi] != -1) return dp[posi];
+        for(int j = posi ; j < s.length() ; j++){
+            str.append(s.charAt(j));
+            if(wordDict.contains(str.toString())){
+                if(helper(s, wordDict, j+1) == 1) return dp[posi] = 1;
+            }
+        }
+        return dp[posi] = 0;  
     }
 
-    boolean wordBreak(String s, List<String> wordDict, int posi) {
-
-        if (posi == s.length()) {
-            if (wordDict.contains(str.toString())) {
-                return true;
-            }
-            return false;
-        }
-        if (wordDict.contains(str.toString())) {
-            StringBuilder now = new StringBuilder(str);
-            str = new StringBuilder();
-            if (wordBreak(s, wordDict, posi + 1)) {
-                return true;
-            }
-            str = new StringBuilder(now);
-            return wordBreak(s, wordDict, posi + 1);
-        } else {
-            while ( !wordDict.contains(str.toString()) && posi < s.length() - 1) {
-                str.append(s.charAt(posi++));
-            }
-            return wordBreak(s, wordDict, posi + 1);
-        }
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Arrays.fill (dp, -1);
+        if(helper(s, wordDict, 0)==1) return true;
+        return false;
     }
 
     public static void main(String[] args) {
