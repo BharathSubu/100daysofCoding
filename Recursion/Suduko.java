@@ -6,7 +6,6 @@ class Suduko {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         if (board[i][j] == '.') {
-
           for (char c = '1'; c <= '9'; c++) {
             if (isValid(board, i, j, c)) {
               board[i][j] = c;
@@ -32,7 +31,7 @@ class Suduko {
 
       if (board[row][i] == c)
         return false;
-      //traversing the box
+      //traversing the 3*3 box
       if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c)
         return false;
     }
