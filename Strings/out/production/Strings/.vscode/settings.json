@@ -1,0 +1,17 @@
+{
+  "files.associations": {
+    "string": "cpp",
+    "iosfwd": "cpp",
+    "compare": "cpp",
+    "xstddef": "cpp",
+    "xutility": "cpp",
+    "utility": "cpp",
+    "vector": "cpp",
+    "initializer_list": "cpp",
+    "type_traits": "cpp",
+    "limits": "cpp",
+    "iostream": "cpp",
+    "unordered_map": "cpp",
+    "xmemory": "cpp"
+  }
+}
