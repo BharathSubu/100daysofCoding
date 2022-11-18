@@ -2,14 +2,7 @@
 
 import java.util.*;
 
-class Pair{
-    int first;
-    int second;
-    Pair(int fr , int sc){
-        first = fr;
-        second = sc;
-    }
-}
+
 
 class TrappingRainWater{
     public int trap(int[] height) {
