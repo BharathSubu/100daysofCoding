@@ -30,13 +30,10 @@ class TrappingRainWater{
                     int h = Math.min(st.peek().first, height[i]) - pr.first;
                     int d = i - st.peek().second - 1;
                     result+= (h*d);
-                    
                     }
                     st.push(new Pair(height[i], i));
-                    
                 }
             }
-            
         }
         return result;
     }
