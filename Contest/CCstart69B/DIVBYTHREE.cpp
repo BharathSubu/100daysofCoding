@@ -14,73 +14,48 @@ void solve()
 {
     ll n;
     cin >> n;
-    unordered_map<ll, ll> map;
-    map[0] = 0;
-    map[1] = 0;
-    map[2] = 0;
-    for (ll i = 0; i < n; i++)
+    int cnt[3] = {0};
+    vi a(n);
+    for (auto &e : a)
     {
-        ll num;
-        cin >> num;
-        num = num % 3;
-        // cout << num << " ";
-        map[num]++;
+        cin >> e, e %= 3;
+        cnt[e]++;
     }
-    if (map[0] == n)
+    if (cnt[1] > cnt[2])
     {
-        cout << "0\n";
-        return;
+        int temp = cnt[2];
+        cnt[2] = cnt[1];
+        cnt[1] = temp;
     }
-    if (map[1] == map[2])
+    int ops = 0;
+    while (cnt[2] - cnt[1] > 2)
     {
-        cout << map[1];
-        nl;
-        return;
+        cnt[2] -= 2;
+        cnt[1] += 2;
+        ops++;
     }
-    ll count = 0;
-    while (map[1] != 0 && map[2] != 0)
+    if (cnt[1] > cnt[2])
     {
-        map[1]--;
-        map[2]--;
-        count++;
+        int temp = cnt[2];
+        cnt[2] = cnt[1];
+        cnt[1] = temp;
     }
-    if (map[2] == 0)
+    ops += cnt[1];
+    if (cnt[2] == cnt[1] + 1)
     {
-        ll needone = 4 - map[1] % 4;
-        if (needone == 4)
-        {
-            map[1] /= 4;
-            count += (map[1] * 3);
-        }
+        if ((cnt[1] == 1 && cnt[0] != 0) || cnt[1] > 1)
+            ops += 2;
         else
-        {
-            // cout << count << " " << needone;
-            // nl;
-            count += needone;
-            map[1] += needone;
-            map[1] /= 4;
-            count += (map[1] * 3);
-        }
+            ops += 6;
     }
-    else
+    else if (cnt[2] == cnt[1] + 1)
     {
-        ll needone = 4 - map[2] % 4;
-        if (needone == 4)
-        {
-            map[2] /= 4;
-            count += (map[2] * 3);
-        }
+        if ((cnt[1] == 1 && cnt[0] != 0) || cnt[1] > 1)
+            ops += 4;
         else
-        {
-            // cout << count << " " << needone;
-            // nl;
-            count += needone;
-            map[2] += needone;
-            map[2] /= 4;
-            count += (map[2] * 3);
-        }
+            ops += 5;
     }
-    cout << count;
+    cout << ops;
     nl;
 }
 

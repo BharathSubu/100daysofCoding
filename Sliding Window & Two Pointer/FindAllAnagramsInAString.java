@@ -44,6 +44,7 @@ class FindAllAnagramsInAString {
         }
         return result;
     }
+    
     public static void main(String[] args) {
         String s = "acdceeccde", t = "cde" ;
         System.out.println(findAnagrams(s, t));

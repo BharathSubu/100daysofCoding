@@ -8,62 +8,100 @@ typedef long long ll;
 #define FORD(a, b, c) for (int(a) = (b); (a) >= (c); --(a))
 #define nl cout << "\n";
 #define vi vector<int>
+#define vl vector<ll>
 #define vvi vector<vector<int>>
 
-int subarrayBitwiseORs(vector<int> &arr)
+bool arrSame(vector<ll> a, vector<ll> b)
 {
 
-    int n = arr.size();
-
-    set<int> st;
-    map<pair<int, int>, int> map;
-
-    for (int i = 0; i < arr.size(); i++)
+    FOR(i, 0, a.size())
     {
-        int curr_OR = arr[i];
-        int prev_OR = 0;
-        int j = i - 1;
-        st.insert(curr_OR);
-        pair<int, int> p1;
-        p1.first = i;
-        p1.second = j;
-        map[p1] = curr_OR;
-        while (j >= 0 && curr_OR != prev_OR)
-        {
+        if ((a[i] != 0 && b[i] == 0) || (a[i] == 0 && b[i] != 0))
+            return 0;
+    }
 
-            curr_OR = curr_OR | arr[j];
-            prev_OR = prev_OR | arr[j];
-            st.insert(curr_OR);
-            p1.second = j;
-            map[p1] = curr_OR;
-            j--;
-        }
-        while (j >= 0)
+    return 1;
+}
+
+bool check(vector<ll> arr, vector<ll> ors, ll k)
+{
+    vector<ll> bits(32, 0);
+    FOR(i, 0, k)
+    for (int j = 30; j >= 0; j--)
+    {
+        if (arr[i] & (1LL << j))
         {
-            p1.second = j;
-            map[p1] = curr_OR;
-            j--;
+            bits[j]++;
+            ors[j]--;
         }
     }
-    for (auto i : map)
-        cout << i.first.first << " " << i.first.second << "   " << i.second
-             << endl;
-    return (int)st.size();
+
+    if (arrSame(bits, ors))
+        return 1;
+
+    FOR(i, k, arr.size())
+    {
+        for (int j = 30; j >= 0; j--)
+        {
+            if (arr[i - k] & (1LL << j))
+            {
+                bits[j]--;
+                ors[j]++;
+            }
+        }
+        for (int j = 30; j >= 0; j--)
+        {
+            if (arr[i] & (1LL << j))
+            {
+                bits[j]++;
+                ors[j]--;
+            }
+        }
+        if (arrSame(bits, ors))
+            return 1;
+    }
+    return 0;
 }
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    vi arr(n);
-    FOR(i, 0, n)
-    {
-        int num;
-        cin >> num;
-        arr.push_back(num);
-    }
+    vector<ll> arr(n);
+    vector<ll> arrOR(32, 0);
 
-    subarrayBitwiseORs(arr);
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    for (int i = 0; i < n; i++)
+    {
+
+        {
+            for (int j = 30; j >= 0; j--)
+            {
+                if (arr[i] & (1LL << j))
+                {
+                    arrOR[j]++;
+                }
+            }
+        }
+    }
+    ll l = 1, r = n, ans = -1;
+    while (l <= r)
+    {
+        ll mid = (l + r) / 2;
+        if (check(arr, arrOR, mid))
+        {
+            ans = max(ans, mid);
+            l = mid + 1;
+        }
+        else
+        {
+            r = mid - 1;
+        }
+    }
+    cout << ans;
+    nl;
 }
 
 int main()
