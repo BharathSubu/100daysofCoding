@@ -12,10 +12,17 @@ class MergeKLists {
                 head = head.next;
             }
         }
+        if(pq.size() == 0) return null;
+        ListNode head = pq.poll().node;
+        ListNode temp = head;
+        temp.next = null;
         while(!pq.isEmpty()){
-            System.out.println(pq.poll().data);
+            // System.out.println(pq.poll().data);
+            temp.next = pq.poll().node;
+            temp = temp.next;
+            temp.next = null;
         }
-        return null;
+        return head;
 
     }
 }
