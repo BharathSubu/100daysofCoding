@@ -51,9 +51,10 @@ void solve()
             len++;
         }
     }
+    sort( A.begin(), A.end() );
     for (int i = 0; i < A.size(); i++)
     {
-        cout << A[i] << " ";
+        cout << A[i]+1 << " ";
     }
     nl;
 }
