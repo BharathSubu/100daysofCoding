@@ -1,28 +1,44 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 //https://leetcode.com/problems/sum-of-distances-in-tree/
 public class SumOfDistanceInTree {
-    HashMap<Integer,List<Integer>> map ;
-    int res = 0;
-    public int[] sumOfDistancesInTree(int n, int[][] edges) {
-        map = new HashMap<>();
-        for(int[]is:edges){
-            map.putIfAbsent(is[0], new ArrayList<>());
-            map.get(is[0]).add(is[1]);
 
+    private int[] res;
+    private int[] count;
+    private List<HashSet<Integer>> tree;
+    public int[] sumOfDistancesInTree(int n, int[][] edges) {
+        tree = new ArrayList<HashSet<Integer>>();
+        res = new int[n];
+        count = new int[n];
+        for(int i = 0; i < n; i++){
+            tree.add(new HashSet<Integer>());
         }
-        System.out.println(map);
-        int visited[] = new int[n];
-        DFS(0,0,hasApple);
-        return  res;
+        for(int[] e : edges){
+            tree.get(e[0]).add(e[1]);
+            tree.get(e[1]).add(e[0]);
+        }
+        postOrder(0, -1);
+        preOrder(0, -1);
+        return res;
     }
-    void DFS(int i,int dis, List<Boolean> hasApple){
-        System.out.println(i);
-        if(map.getOrDefault(i,null) == null) return;
-        for(int child : map.get(i)){
-            DFS(child, dis ,hasApple);
+
+    public void postOrder(int root, int pre){
+        for(int i : tree.get(root)) {
+            if(i == pre) continue;
+            postOrder(i, root);
+            count[root] += count[i];
+            res[root] += res[i] + count[i];
+        }
+        count[root]++;
+    }
+
+    public void preOrder(int root, int pre){
+        for(int i : tree.get(root)){
+            if(i == pre) continue;
+            res[i] = res[root] - count[i] + count.length - count[i];
+            preOrder(i, root);
         }
     }
 

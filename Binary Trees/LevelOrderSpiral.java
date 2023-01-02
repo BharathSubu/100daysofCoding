@@ -5,6 +5,7 @@ import  java.util.*;
 public class LevelOrderSpiral {
     ArrayList<Integer> findSpiral(Node root)
     {
+
         ArrayList<Integer> res = new ArrayList<>();
         Queue<Node> qu = new LinkedList<>();
         boolean isRevers = true;
