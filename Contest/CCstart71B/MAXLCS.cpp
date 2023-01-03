@@ -13,8 +13,8 @@ typedef long long ll;
 void solve()
 {
 }
-private
-static int findLCM(String text1, String text2, int id1, int id2, int[][] dp)
+
+int findLCM(String text1, String text2, int id1, int id2, int[][] dp)
 {
     if (id1 < 0 || id2 < 0)
         return 0;

@@ -12,7 +12,6 @@ typedef long long ll;
 
 vector<pair<char, int>> compress(string s, int k)
 {
-
     int isZero = 0;
     int isOne = 1;
     vector<pair<char, int>> res;
@@ -62,38 +61,16 @@ void solve()
     cin >> n >> k;
     string s;
     cin >> s;
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int a, b, ans = INT_MAX;
-        cin >> a >> b;
-        string s;
-        cin >> s;
-        int arr[a];
-        int count = 0;
-        for (int i = 1; i < a; i++)
-        {
-            if (s[i - 1] != s[i])
-            {
-                count++;
-                arr[i] = count;
-            }
-            else
-                arr[i] = count;
-        }
-        arr[0] = 0;
-        for (int i = a - 1; i >= 0; i--)
-        {
-            if ((i - (b - 1)) < 0)
-                break;
-            int check = arr[i] - arr[i - b + 1];
-            if (s[i] == '0')
-                check++;
-            ans = min(ans, check);
-        }
-        cout << ans << endl;
+    vector<pair<char, int>> comp = compress(s,k);
+    if(comp.size()==1) {
+        cout<<comp[0].first;
+        nl;
+        return;
     }
+    int res = s.length();
+    
+    
+    
 }
 
 int main()
