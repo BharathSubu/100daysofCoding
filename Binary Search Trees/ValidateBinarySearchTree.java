@@ -1,5 +1,6 @@
 //https://leetcode.com/problems/validate-binary-search-tree/submissions/
 public class ValidateBinarySearchTree {
+
     long prev = Long.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
         if(root == null )return true;
