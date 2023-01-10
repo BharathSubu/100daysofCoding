@@ -1,23 +1,20 @@
 //https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
 public class KthSmallestElementInABst {
-
+    int res = -1;
     int step = 0;
-    int ans = 0;
     public int kthSmallest(TreeNode root, int k) {
-        inorder(root,k);
-        return ans;
+        inorder(root);
+        return res;
     }
-
-    public void inorder(TreeNode head , int k){
-        if(head==null) return ;
-        inorder(head.left,k);
-        step++;
-        if(step == k){
-            ans = head.val;
+    void inorder(TreeNode root){
+        if(root==null) return;
+        inorder(root.left);
+        if(step==k){
+            res = root.val;
             return;
         }
-        inorder(head.right,k);
-        return ;
+        inorder(root.right);
+        
     }
 }
