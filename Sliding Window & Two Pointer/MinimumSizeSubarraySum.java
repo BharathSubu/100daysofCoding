@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/minimum-size-subarray-sum/description/
+// https://leetcode.com/problems/minimum-size-subarray-sum/description/
 
 class MinimumSizeSubarraySum{
     public static int minSubArrayLen(int target, int[] nums) {
@@ -15,10 +15,10 @@ class MinimumSizeSubarraySum{
         }
         if(len == nums.length+1) return 0;
         return len;
-
+    
     }
     public static void main(String[] args) {
-        int target = 8 ; int [] nums = {1,1,1,1,1,1,1,1};
+       int target = 8 ; int [] nums = {1,1,1,1,1,1,1,1};
         System.out.println(minSubArrayLen(target, nums));
     }
 }
