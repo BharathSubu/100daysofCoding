@@ -31,7 +31,7 @@ public class NumberOfNodesInTheSubTreeWithTheSameLabel {
                 adj.get(edge[1]).add(edge[0]);
             }
             int[] result = new int[n];
-            dfs(0, result, adj, -1, labels);
+            dfs(0, result, adj, -1, s);
             return result;
         }
 }

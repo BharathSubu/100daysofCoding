@@ -10,6 +10,7 @@ class LeastCommonAncestor {
     TreeNode findLCA(TreeNode root, TreeNode p, TreeNode q){
         if(root.val >= p.val && root.val <= q.val) return root;
         if(root.left != null && (root.val > p.val && root.val > q.val )) return findLCA(root.left, p, q);
-
+        else if(root.right != null && (root.val < p.val && root.val < q.val )) return findLCA(root.right, p, q);
+        return null;
     }
 }

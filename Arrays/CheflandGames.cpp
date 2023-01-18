@@ -25,6 +25,7 @@ void solve()
     else
         cout << "OUT";
     nl;
+    
 }
 
 int main()

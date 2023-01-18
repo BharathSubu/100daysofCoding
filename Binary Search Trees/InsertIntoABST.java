@@ -1,32 +1,30 @@
+// https://leetcode.com/problems/insert-into-a-binary-search-tree/description/
+
+import java.util.*;
+
 public class InsertIntoABST {
-    public TreeNode insertIntoBST(TreeNode root, int val) {        if(root == null) {
-            root = new TreeNode(val);
-            return root;
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+        if(root==null) {
+            TreeNode node = new TreeNode(val);
+            return node;
         }
-        else{
-            insertIntoBST( root ,  val , 0);
-        }
+        insertNode(root, val);
         return root;
     }
-    void insertIntoBST(TreeNode root , int val , int pos){
-
-        if(val < root.val){
+    void insertNode(TreeNode root,int val){
+        if(root.val > val ){
             if(root.left == null){
                 root.left = new TreeNode(val);
                 return;
             }
-            else{
-                insertIntoBST(root.left , val,0);
-            }
+            insertNode(root.left, val);
         }
         else{
             if(root.right == null){
                 root.right = new TreeNode(val);
                 return;
             }
-            else{
-                insertIntoBST(root.right , val,0);
-            }
+            insertNode(root.right, val);
         }
     }
 }
