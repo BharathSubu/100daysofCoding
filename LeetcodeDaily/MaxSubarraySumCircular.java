@@ -3,7 +3,7 @@
 import java.util.*;
 
 class MaxSubarraySumCircular {
-    public int maxSubarraySumCircular(int[] nums) {
+    public int maxSubarraySumCircular(int[] arr) {
         int n = arr.length;
         int nums[] = new int[2*n];
         for (int i = 0; i < nums.length; i++) {
