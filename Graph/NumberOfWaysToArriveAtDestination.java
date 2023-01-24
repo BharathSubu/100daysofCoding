@@ -23,14 +23,11 @@ public class NumberOfWaysToArriveAtDestination {
             adj.get(roads[i][0]).add(new Pair(roads[i][1], roads[i][2]));
             adj.get(roads[i][1]).add(new Pair(roads[i][0], roads[i][2]));
         }
-        PriorityQueue < Pair > pq = new PriorityQueue < Pair > ((x, y) -> x.first - y.first);
+        PriorityQueue < Pair > pq = new PriorityQueue <> ((x, y) -> x.first - y.first);
 
         int[] dist = new int[n];
-        int[] ways = new int[n];
-        for (int i = 0; i < n; i++) {
-            dist[i] = (int) 1e9;
-            ways[i] = 0;
-        }
+        long[] ways = new long[n];
+        Arrays.fill(dist, (int)1e18);
         dist[0] = 0;
         ways[0] = 1;
         pq.add(new Pair(0, 0));
@@ -45,7 +42,7 @@ public class NumberOfWaysToArriveAtDestination {
                 int edW = it.second;
                 if (dis + edW < dist[adjNode]) {
                     dist[adjNode] = dis + edW;
-                    pq.add(new Pair(dis + edW, adjNode));
+                    pq.add(new Pair(dist[adjNode], adjNode));
                     ways[adjNode] = ways[node];
                 }
                 else if (dis + edW == dist[adjNode]) {
@@ -53,7 +50,6 @@ public class NumberOfWaysToArriveAtDestination {
                 }
             }
         }
-        return ways[n - 1] % mod;
-
+        return (int)ways[n - 1];
     }
 }
