@@ -7,7 +7,6 @@ public class DSUbySize {
     List<Integer> size = new ArrayList<>();
     public DSUbySize(int n) {
         for (int i = 0; i <= n; i++) {
-
             parent.add(i);
             size.add(1);
         }
