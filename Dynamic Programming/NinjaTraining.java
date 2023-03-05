@@ -2,6 +2,7 @@
 public class NinjaTraining {
     public int maximumPoints(int points[][],int N){
         //code here
+        return 1;
     }
 
 

@@ -2,8 +2,6 @@
 import java.util.*;
 
 public class Triangle {
-    //memoization
-    public int memoization
 
     //tabulation
     public int tabulationMinimumTotal(List<List<Integer>> triangle) {
