@@ -6,11 +6,7 @@ public class NumberOfDistinctSubsequences {
         int dp[] = new int[n];
         Arrays.fill(dp,-1);
         HashMap<Integer,HashSet<String>> map = new HashMap<>();
-        HashSet<String> res = find(0,n,dp,map);
-        return res.size();
+//        HashSet<String> res = find(0,n,dp,map);
+        return 1;
     }
-
-    private HashSet<String> find(int i,int n ,int[] dp, HashMap<Integer, HashSet<String>> map) {
-    }
-
 }

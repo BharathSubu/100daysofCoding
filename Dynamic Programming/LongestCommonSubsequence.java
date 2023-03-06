@@ -3,7 +3,7 @@ import java.util.Arrays;
 //https://leetcode.com/problems/longest-common-subsequence/
 public class LongestCommonSubsequence {
     //memoization
-    public int memoizationLongestCommonSubsequence(String s1, String s2) {
+    public int longestCommonSubsequence(String s1, String s2) {
         int n = s1.length() , m = s2.length();
         int dp[][] = new int[n][m];
         Arrays.stream(dp).forEach(a->Arrays.fill(a,-1));
@@ -17,7 +17,8 @@ public class LongestCommonSubsequence {
         if(s1.charAt(i) == s2.charAt(j)){
             count = 1 + find(i-1,j-1,s1,s2,dp);
         }
-        else count = Math.min(find(i-1,j,s1,s2,dp),find(i,j-1,s1,s2,dp));
+        else count = Math.max(find(i-1,j,s1,s2,dp),find(i,j-1,s1,s2,dp));
+
         return dp[i][j] = count;
     }
 
