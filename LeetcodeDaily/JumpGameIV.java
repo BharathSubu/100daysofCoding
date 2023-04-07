@@ -16,7 +16,7 @@ public class JumpGameIV {
         }
         Queue<Pair> qu = new LinkedList<>();
         qu.add(new Pair(0,0));
-        boolean vis[] = new boolean[];
+        boolean vis[] = new boolean[arr.length];
         vis[0] = true;
         while (!qu.isEmpty()){
             Pair p = qu.remove();
